@@ -18,11 +18,43 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getUsername()
+    {
+        return username;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
+
+    public String getSection()
+    {
+        return section;
+    }
+
+    public void setSection(String section)
+    {
+        this.section = section;
+    }
+
+    public boolean isAttended()
+    {
+        return isAttended;
+    }
+
+    public void setAttended(boolean attended)
+    {
+        isAttended = attended;
+    }
+
+    public int getCode()
+    {
+        return code;
+    }
+
+    public void setCode(int code)
+    {
+        this.code = code;
     }
 }

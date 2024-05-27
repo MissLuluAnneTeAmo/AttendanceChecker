@@ -6,7 +6,6 @@ public class EventMaker {
     public EventMaker (String EventName, int Date){
         this.EventName = EventName;
         this.Date = Date;
-
     }
 
     public String getEventName() {

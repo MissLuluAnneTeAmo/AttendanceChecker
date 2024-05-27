@@ -84,7 +84,7 @@ public class AttendanceFrame extends JFrame
         label.setLayout(null);
 
         FontMetrics metrics = label.getFontMetrics(label.getFont());
-        int width =  metrics.stringWidth(label.getText());
+        int width =  metrics.stringWidth(label.getText().toUpperCase());
         int height = metrics.getHeight();
 
         label.setSize(new Dimension(width, height));
@@ -102,7 +102,7 @@ public class AttendanceFrame extends JFrame
         label.setLayout(null);
 
         FontMetrics metrics = label.getFontMetrics(label.getFont());
-        int width =  metrics.stringWidth(label.getText());
+        int width =  metrics.stringWidth(label.getText().toUpperCase());
         int height = metrics.getHeight();
 
         label.setSize(new Dimension(width, height));
