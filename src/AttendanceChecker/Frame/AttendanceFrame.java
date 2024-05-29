@@ -1,3 +1,5 @@
+package AttendanceChecker.Frame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -6,11 +8,11 @@ public class AttendanceFrame extends JFrame
     AttendanceFrame frame = this;
     JPanel panel;
     JLabel title;
-    JLabel username;
+    JLabel id;
     JLabel password;
     JLabel sign_in_button;
     JButton sign_in_buttonButton;
-    JTextField usernameField;
+    JTextField idField;
     JTextField passwordField;
 
     public AttendanceFrame()
@@ -19,9 +21,9 @@ public class AttendanceFrame extends JFrame
         initializeComponent();
         panel = createContentPanel();
         title = createTitle();
-        username = createUsername();
+        id = createId();
         password = createPassword();
-        usernameField = createUsernameField();
+        idField = createIdField();
         passwordField = createPasswordField();
         sign_in_buttonButton = createSign_in_buttonButton();
 
@@ -30,9 +32,9 @@ public class AttendanceFrame extends JFrame
         // adding components
         add(panel);
         panel.add(title);
-        panel.add(username);
+        panel.add(id);
         panel.add(password);
-        panel.add(usernameField);
+        panel.add(idField);
         panel.add(passwordField);
         panel.add(sign_in_buttonButton);
 
@@ -40,15 +42,15 @@ public class AttendanceFrame extends JFrame
 
     }
 
-    private JTextField createUsernameField() {
+    private JTextField createIdField() {
         JTextField field = new JTextField();
         field.setText("");
         field.setFont(new Font("Arial", Font.PLAIN, 15));
         field.setLayout(null);
 
 
-        field.setSize(225, username.getHeight());
-        field.setLocation(150, 200);
+        field.setSize(225, 30);
+        field.setLocation((getWidth() - field.getWidth()) / 2 , 180);
 
         return field;
     }
@@ -59,8 +61,8 @@ public class AttendanceFrame extends JFrame
         field.setFont(new Font("Arial", Font.PLAIN, 15));
         field.setLayout(null);
 
-        field.setSize(225, password.getHeight());
-        field.setLocation(150, 260);
+        field.setSize(225, 30);
+        field.setLocation((getWidth() - field.getWidth()) / 2 , 240);
 
         return field;
     }
@@ -69,8 +71,9 @@ public class AttendanceFrame extends JFrame
         button.setText("Sign in");
         button.setFont(new Font("Open Sans", Font.BOLD, 20));
         button.setForeground(Color.white);
-        button.setLocation(175, 315);
-        button.setSize(150,50);
+        button.setBackground(new Color(0x64CC3C));
+        button.setSize(140,50);
+        button.setLocation((getWidth() - button.getWidth()) / 2 , 315);
         button.setLayout(null);
 
         return button;
@@ -78,13 +81,13 @@ public class AttendanceFrame extends JFrame
 
     private JLabel createTitle() {
         JLabel label = new JLabel();
-        label.setText("Sign in as Student");
-        label.setForeground(Color.black);
-        label.setFont(new Font("Futura", Font.BOLD, 30));
+        label.setText("Log in");
+        label.setForeground(new Color(0xC16B6B));
+        label.setFont(new Font("Script MT Bold", Font.BOLD, 50));
         label.setLayout(null);
 
         FontMetrics metrics = label.getFontMetrics(label.getFont());
-        int width =  metrics.stringWidth(label.getText().toUpperCase());
+        int width =  metrics.stringWidth(label.getText());
         int height = metrics.getHeight();
 
         label.setSize(new Dimension(width, height));
@@ -98,32 +101,27 @@ public class AttendanceFrame extends JFrame
         JLabel label = new JLabel();
         label.setText("Password");
         label.setForeground(Color.black);
-        label.setFont(new Font("Open Sans", Font.BOLD, 20));
+        label.setFont(new Font("Open Sans", Font.PLAIN, 15));
         label.setLayout(null);
 
-        FontMetrics metrics = label.getFontMetrics(label.getFont());
-        int width =  metrics.stringWidth(label.getText().toUpperCase());
-        int height = metrics.getHeight();
 
-        label.setSize(new Dimension(width, height));
-        label.setLocation(30, 260);
+
+        label.setSize(150,150);
+        label.setLocation(137,155);
 
         return label;
     }
 
-    private JLabel createUsername() {
+    private JLabel createId() {
         JLabel label = new JLabel();
-        label.setText("Username");
+        label.setText("ID number");
         label.setForeground(Color.black);
-        label.setFont(new Font("Open Sans", Font.BOLD, 20));
+        label.setFont(new Font("Open Sans", Font.PLAIN, 15));
         label.setLayout(null);
 
-        FontMetrics metrics = label.getFontMetrics(label.getFont());
-        int width =  metrics.stringWidth(label.getText());
-        int height = metrics.getHeight();
 
-        label.setSize(new Dimension(width, height));
-        label.setLocation(30, 200);
+        label.setSize(150,150);
+        label.setLocation(137, 95);
 
         return label;
     }
@@ -132,9 +130,10 @@ public class AttendanceFrame extends JFrame
         JPanel panel = new JPanel();
         panel.setSize(500, 500);
         panel.setLayout(null);
-        panel.setBackground(new Color(255, 255, 255));
+        panel.setBackground(new Color(243, 191, 191));
         return panel;
     }
+
 
     private void initializeComponent() {
         setSize(500, 500);

@@ -1,3 +1,4 @@
+package AttendanceChecker;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -7,26 +8,26 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
-public class AccountScrollPane extends JScrollPane
+public class EventScrollPane extends JScrollPane
 {
     private JPanel container;
     private int size;
-    ArrayList<Person> list;
+    public ArrayList<Event> list;
 
     /**<editor-fold desc="Description">
      * citation: <a href="https://github.com/iid3rp/Pabunot/blob/main/src/pabunot/prize/PrizeListPane.java">pabunot</a>
      *</editor-fold>
      * */
-    public AccountScrollPane(ArrayList<Person> list)
+    public EventScrollPane()
     {
         super();
         size = 0;
-        this.list = list;
+        this.list = new ArrayList<>();
         initializeComponent();
-        container.setSize(new Dimension(AccountPanel.WIDTH, ((AccountPanel.HEIGHT * list.size()) + list.size())));
-        container.setPreferredSize(new Dimension(AccountPanel.WIDTH, ((AccountPanel.HEIGHT) * list.size()) + size));
+        container.setSize(new Dimension(EventPanel.WIDTH, ((EventPanel.HEIGHT * list.size()) + list.size())));
+        container.setPreferredSize(new Dimension(EventPanel.WIDTH, ((EventPanel.HEIGHT) * list.size()) + size));
         // add components into the container here :3
-        addComponents();
+        addComponents(list);
 
 
         setBorder(new LineBorder(Color.black));
@@ -35,7 +36,8 @@ public class AccountScrollPane extends JScrollPane
         getViewport().setOpaque(false);
         getVerticalScrollBar().setVisible(false);
         getHorizontalScrollBar().setVisible(false);
-        setSize(new Dimension(AccountPanel.WIDTH, 300));
+        setSize(new Dimension(EventPanel.WIDTH, 400));
+        setPreferredSize(new Dimension(EventPanel.WIDTH, 400));
         setDoubleBuffered(true);
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -50,6 +52,10 @@ public class AccountScrollPane extends JScrollPane
         });
     }
 
+    public void setList(ArrayList<Event> newList) {
+        this.list = newList;
+        restore();
+    }
     public void initializeComponent()
     {
         // add a container to put stuff :3
@@ -62,36 +68,33 @@ public class AccountScrollPane extends JScrollPane
         container.setDoubleBuffered(true);
     }
 
-    public void addComponents()
-    {
-        int index = 0; // iterator
-        if(list != null)
-        {
-            for(Person p : list)
-            {
-                AccountPanel bankInterface = new AccountPanel(p);
-                bankInterface.setBounds(0, (AccountPanel.HEIGHT * index++), bankInterface.getWidth(), bankInterface.getHeight());
-                container.add(bankInterface);
-            }
-            container.repaint();
-            repaint();
-        }
-    }
-
-    public void restore()
-    {
+    public void restore() {
         container.removeAll();
-        container.setSize(new Dimension(AccountPanel.WIDTH, (AccountPanel.HEIGHT * list.size()) + (list. size())));
-        container.setPreferredSize(new Dimension(AccountPanel.WIDTH, (AccountPanel.HEIGHT * list.size()) + (list.size())));
-        // add the components to the panel to be put into the scrollPane...
-        addComponents();
+        // Create a copy of the list to avoid modification issues
+        ArrayList<Event> copyList = new ArrayList<>(list);
+        container.setSize(new Dimension(EventPanel.WIDTH, (EventPanel.HEIGHT * copyList.size()) + (copyList.size())));
+        container.setPreferredSize(new Dimension(EventPanel.WIDTH, (EventPanel.HEIGHT * copyList.size()) + (copyList.size())));
+        // Add components based on the copied list
+        addComponents(copyList);
         setViewportView(container);
         container.repaint();
         container.validate();
         repaint();
         validate();
-
     }
+
+    private void addComponents(ArrayList<Event> copyList) {
+        int index = 0;
+        if (copyList != null) {
+            for (Event e : copyList) {
+                EventPanel eventPanel = new EventPanel(e); // Pass the list here
+                eventPanel.setBounds(0, (EventPanel.HEIGHT * index++), eventPanel.getWidth(), eventPanel.getHeight());
+                container.add(eventPanel);
+            }
+        }
+    }
+
+
 
     @Deprecated
     public JScrollPane getPane()
@@ -111,4 +114,5 @@ public class AccountScrollPane extends JScrollPane
         this.size = size;
     }
 }
+
 

@@ -1,23 +1,29 @@
+package AttendanceChecker;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Event {
-    private String name;
+    private String title;
     private String description;
     private String date;
     private String time;
-    private PersonList list;
+    private final ArrayList<Person> people;
 
-    public Event(String name, String description, String date, String time) {
-        this.name = name;
+    public Event(String title, String description, String date, String time, ArrayList<Person> people) {
+        this.title = title;
         this.description = description;
         this.date = date;
         this.time = time;
+        this.people = people;
     }
 
     public String getName() {
-        return name;
+        return title;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.title = name;
     }
 
     public String getDescription() {
@@ -43,4 +49,9 @@ public class Event {
     public void setTime(String time) {
         this.time = time;
     }
+    @Override
+    public String toString() {
+        return title + " - " + description + " on " + date + " at " + time;
+    }
 }
+

@@ -1,13 +1,21 @@
+package AttendanceChecker;
 public class Person {
 
     private String name;
-    private String username;
-    private int age;
+    private String id;
+    private String section;
     private boolean isAttended;
-    private int code;
-    public Person(String name, int age) {
+    private String code;
+    public Person(String name, String section) {
         this.name = name;
-        this.age = age;
+        this.section = section;
+    }
+
+    public Person(String name, String section, String id, String code) {
+        this.name = name;
+        this.id = id;
+        this.section = section;
+        this.code = code;
     }
 
     public String getName() {
@@ -18,14 +26,14 @@ public class Person {
         this.name = name;
     }
 
-    public String getUsername()
+    public String getId()
     {
-        return username;
+        return id;
     }
 
-    public void setUsername(String username)
+    public void setId(String username)
     {
-        this.username = username;
+        this.id = username;
     }
 
     public String getSection()
@@ -48,12 +56,12 @@ public class Person {
         isAttended = attended;
     }
 
-    public int getCode()
+    public String getCode()
     {
         return code;
     }
 
-    public void setCode(int code)
+    public void setCode(String code)
     {
         this.code = code;
     }
