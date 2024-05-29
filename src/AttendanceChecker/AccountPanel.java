@@ -58,6 +58,7 @@ public class AccountPanel extends JPanel
                 if (updatePerson != null){
                     person.setName(updatePerson.getName());
                     person.setSection(updatePerson.getSection());
+                    person.setCode(updatePerson.getCode());
                     pane.restore();
                 }
             }
