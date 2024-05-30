@@ -38,7 +38,26 @@ public class AttendanceFrame extends JFrame
         panel.add(passwordField);
         panel.add(sign_in_buttonButton);
 
+        refreshAttendanceSheet();
         repaint();
+
+    }
+
+    private void refreshAttendanceSheet() {
+        var x = new File(directory).mkdirs();
+        var y = new File(directory + File.separator + event.getName()).mkdirs();
+
+        try {
+            FileWriter writer = new FileWriter(directory + File.separator + event.getName() + File.separator + "EventInfoAttended.csv");
+            writer.write("Name,Attendance\n");
+            for (Person p : event.people) {
+                writer.write(p.getName() + "," + (p.isAttended ? "Present" : "Absent") + "\n");
+            }
+            writer.close();
+
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
 
     }
 
@@ -68,7 +87,7 @@ public class AttendanceFrame extends JFrame
     }
     private JButton createSign_in_buttonButton() {
         JButton button = new JButton();
-        button.setText("Sign in");
+        button.setText("Log in");
         button.setFont(new Font("Open Sans", Font.BOLD, 20));
         button.setForeground(Color.white);
         button.setBackground(new Color(0x64CC3C));
@@ -77,6 +96,14 @@ public class AttendanceFrame extends JFrame
         button.setLayout(null);
 
         return button;
+    }
+
+    private boolean saveEventDetails(AbstractButton descriptionField, AbstractButton titleField, AbstractButton dateField, AbstractButton timeField) {
+        if (titleField.getText().isEmpty() || descriptionField.getText().isEmpty() || dateField.getText().isEmpty() || timeField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "All fields must be filled out", "Error", JOptionPane.ERROR_MESSAGE);
+            return true;
+        }
+        return false;
     }
 
     private JLabel createTitle() {
@@ -138,7 +165,7 @@ public class AttendanceFrame extends JFrame
     private void initializeComponent() {
         setSize(500, 500);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
 
     }

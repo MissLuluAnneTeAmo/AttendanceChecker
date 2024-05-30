@@ -1,14 +1,13 @@
 package AttendanceChecker;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 
-public class ThankYou extends JPanel
+public class ThankYou extends JDialog
 {
+    JPanel panel;
     JLabel thankYou;
     JLabel infoLabel;
     JButton okButton;
@@ -16,21 +15,29 @@ public class ThankYou extends JPanel
     {
         super();
         initializeComponent();
+        panel = createPanel();
         if (isRegistered) {
+            thankYou = createThankYou("You've already responded");
+            infoLabel = createInfoLabel("Hey there! Looks like you're already registered for this event. We're excited you can join us!");
+        } else {
             thankYou = createThankYou("THANK YOU");
             infoLabel = createInfoLabel("Registration confirmed! You're all set for this event");
         }
-        else {
-            thankYou = createThankYou("You've already responded");
-            infoLabel = createInfoLabel("Hey there! Looks like you're already registered for this event. We're excited you can join us!");
-        }
         okButton = createOkButton();
 
-        add(thankYou);
-        add(infoLabel);
-        add(okButton);
+        add(panel);
+        panel.add(thankYou);
+        panel.add(infoLabel);
+        panel.add(okButton);
 
 
+    }
+
+    private JPanel createPanel() {
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(0xFFFFFF));
+        panel.setLayout(null);
+        return panel;
     }
 
     private JButton createOkButton()
@@ -92,7 +99,16 @@ public class ThankYou extends JPanel
 
     }
 
+
     private void initializeComponent()
     {
+        setModalityType(ModalityType.APPLICATION_MODAL);
+        setSize(500, 400);
+        setLocationRelativeTo(null);
+
+    }
+    public void showDialog() {
+        setVisible(true);
+
     }
 }

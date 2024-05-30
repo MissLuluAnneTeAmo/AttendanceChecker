@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Event {
+    public static Person[] person;
     private String title;
     private String description;
     private String date;

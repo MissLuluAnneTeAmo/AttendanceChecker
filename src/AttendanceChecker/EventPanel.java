@@ -12,7 +12,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class EventPanel extends JPanel
 {
@@ -171,7 +170,7 @@ public class EventPanel extends JPanel
     private void initializeComponent() {
         setSize(WIDTH, HEIGHT);
         setBorder(new LineBorder(Color.black));
-        setBackground(new Color(0xffffff));
+        setBackground(new Color(0xF4A2CB));
         setLayout(null);
     }
 }

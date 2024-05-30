@@ -63,7 +63,7 @@ public class EventScrollPane extends JScrollPane
         container.setLayout(null);
         container.setLocation(0, 0);
         container.setOpaque(false);
-        setBackground(new Color(255, 255, 255, 60));
+        setBackground(new Color(244, 121, 172, 160));
         setOpaque(true);
         container.setDoubleBuffered(true);
     }

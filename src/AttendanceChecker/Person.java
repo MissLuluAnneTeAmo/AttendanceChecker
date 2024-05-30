@@ -4,7 +4,7 @@ public class Person {
     private String name;
     private String id;
     private String section;
-    private boolean isAttended;
+    public boolean isAttended;
     private String code;
     public Person(String name, String section) {
         this.name = name;
@@ -46,11 +46,6 @@ public class Person {
         this.section = section;
     }
 
-    public boolean isAttended()
-    {
-        return isAttended;
-    }
-
     public void setAttended(boolean attended)
     {
         isAttended = attended;
@@ -64,5 +59,9 @@ public class Person {
     public void setCode(String code)
     {
         this.code = code;
+    }
+
+    public boolean setAttended() {
+        return false;
     }
 }

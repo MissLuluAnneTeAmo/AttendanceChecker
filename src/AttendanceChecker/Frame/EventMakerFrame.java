@@ -55,8 +55,8 @@ public class EventMakerFrame extends JFrame
         createEvent = createCreateEvent();
         titleLabel = createCustomLabel("Title:", 30, 80);
         descriptionLabel = createCustomLabel("Description: ", 30,150);
-        dateLabel = createCustomLabel("Date: ",30,330);
-        timeLabel = createCustomLabel("Time: ", 230, 330);
+        dateLabel = createCustomLabel("Date: ",30,380);
+        timeLabel = createCustomLabel("Time: ", 230, 380);
 
         // adding components
         add(panel);
@@ -200,7 +200,7 @@ public class EventMakerFrame extends JFrame
         field.setText("");
         field.setSize(100, 30);
         field.setFont(new Font("Open Sans", Font.PLAIN, 15));
-        field.setLocation(30, 350);
+        field.setLocation(30, 400);
         return field;
     }
     private JTextField createTimeField()
@@ -209,14 +209,14 @@ public class EventMakerFrame extends JFrame
         field.setText("");
         field.setSize(100, 30);
         field.setFont(new Font("Open Sans", Font.PLAIN, 15));
-        field.setLocation(230, 350);
+        field.setLocation(230, 400);
         return field;
     }
     private JTextArea createDescription()
     {
         JTextArea area = new JTextArea();
         area.setText("");
-        area.setSize(300, 150);
+        area.setSize(300, 200);
         area.setLineWrap(true);
         area.setFont(new Font("Open Sans", Font.PLAIN, 15));
         area.setLocation(30, 170);
